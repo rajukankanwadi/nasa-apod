@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
 
@@ -19,12 +20,19 @@ class ViewController: UIViewController {
     
     var isSerchByDate = false
     var picInfo: PictureOfTheDay?
-    var downloadedImage: UIImage?
+    var downloadedImage: Data?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.activityIndicator.startAnimating()
+        
+        if let savedPicInfo = CoreDataHelper.retrieveData(forDate: datePicker.date.yyyyMMdd ?? Date().yyyyMMdd!), let title = savedPicInfo.title, let explnaination = savedPicInfo.explaination, let imageData = savedPicInfo.imageData {
+            setUpTextlabels(title: title, explanation: explnaination)
+            imageView.image = UIImage(data: imageData)
+            stopActivityIndicator()
+        }
+
         if isSerchByDate {
             self.title = "Search By Date"
             searchDateView.isHidden = false
@@ -34,14 +42,17 @@ class ViewController: UIViewController {
             searchDateView.isHidden = true
             fetchCurrentDateAPOD()
         }
+        if !InternetConnectionManager.isConnectedToNetwork() {
+            stopActivityIndicator()
+        }
         self.view.layoutSubviews()
     }
     
-    fileprivate func setUpTextlabels(picInfo: PictureOfTheDay) {
+    fileprivate func setUpTextlabels(title: String?, explanation: String?) {
         self.titleLabel.isHidden = false
         self.subTitleLabel.isHidden = false
-        self.titleLabel.text = picInfo.title
-        self.subTitleLabel.text = picInfo.explanation
+        self.titleLabel.text = title
+        self.subTitleLabel.text = explanation
         self.view.layoutSubviews()
     }
     
@@ -52,7 +63,7 @@ class ViewController: UIViewController {
                     self.picInfo = picInfo
                     self.downloadImage(urlString: urlStr)
                     DispatchQueue.main.async {
-                        self.setUpTextlabels(picInfo: picInfo)
+                        self.setUpTextlabels(title: picInfo.title, explanation: picInfo.explanation)
                     }
                 } else {
                    self.stopActivityIndicator()
@@ -66,7 +77,7 @@ class ViewController: UIViewController {
             URLSession.shared.loadImage(url: URL(string: urlString)!) { data, _, error in
                 if let imageData = data {
                     let image = UIImage(data: imageData)
-                    self.downloadedImage = image
+                    self.downloadedImage = imageData
                     DispatchQueue.main.async {
                         self.activityIndicator.stopAnimating()
                         self.imageView.image = image
@@ -85,12 +96,28 @@ class ViewController: UIViewController {
         self.subTitleLabel.text = ""
         activityIndicator.startAnimating()
         getPictureForSelectedDate()
+        if !InternetConnectionManager.isConnectedToNetwork() {
+            stopActivityIndicator()
+            showAlert(title: "No Internet", message: "Please check your connection and retry")
+        }
     }
 
+    fileprivate func showAlert(title: String, message: String) {
+        let alert = UIAlertController.init(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
     @IBAction func favouriteButtonClicked(_ sender: Any) {
-        if let picInfo = self.picInfo, !FavouritesTableViewController.favItems.contains(picInfo) {
-            FavouritesTableViewController.favItems.append(picInfo)
-            FavouritesTableViewController.images.append(self.downloadedImage ?? UIImage())
+        if let picInfo = self.picInfo {
+            let savedDates = CoreDataHelper.retrieveSavedData().map{$0.date}
+            if savedDates.contains(picInfo.date) {
+                showAlert(title: "Saved Already", message: "This image alredy exists in Favourites")
+                return
+            }
+            //Save favourite records in coreData
+            CoreDataHelper.createData(picInfo: picInfo, imageData: self.downloadedImage ?? Data())
+            showAlert(title: "Saved", message: "This image is now saved in Favourites")
         }
     }
     
@@ -101,7 +128,7 @@ class ViewController: UIViewController {
                     self.picInfo = picInfo
                     self.downloadImage(urlString: urlStr)
                     DispatchQueue.main.async {
-                        self.setUpTextlabels(picInfo: picInfo)
+                        self.setUpTextlabels(title: picInfo.title, explanation: picInfo.explanation)
                     }
                 } else {
                     self.stopActivityIndicator()

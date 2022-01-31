@@ -10,14 +10,16 @@ import UIKit
 class FavouritesTableViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    static var favItems: [PictureOfTheDay] = []
-    static var images: [UIImage] = []
+    var savedPics: [SavedPictureModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Favourites"
         tableView.estimatedRowHeight = 90
         tableView.register(UINib.init(nibName: String(describing: FavPictureTableViewCell.self), bundle: nil), forCellReuseIdentifier: "FavPictureTableViewCell")
+        tableView.tableFooterView = UIView()
+        savedPics = CoreDataHelper.retrieveSavedData()
+        tableView.reloadData()
     }
 
 }
@@ -29,17 +31,23 @@ extension FavouritesTableViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return FavouritesTableViewController.favItems.count
+        return self.savedPics.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "FavPictureTableViewCell", for: indexPath) as? FavPictureTableViewCell {
-            let favItem = FavouritesTableViewController.favItems[indexPath.row]
-            let image = FavouritesTableViewController.images[indexPath.row]
-            cell.configureCell(favItem: favItem, image: image)
+            let favItem = savedPics[indexPath.row]
+            cell.configureCell(favItem: favItem, imageData: favItem.imageData ?? Data())
+            return cell
         }
         return UITableViewCell()
     }
     
     
 }
+
+extension SavedPictureModel {
+    static func == (lhs: SavedPictureModel, rhs: SavedPictureModel) -> Bool {
+      return lhs.url == rhs.url
+    }
+  }

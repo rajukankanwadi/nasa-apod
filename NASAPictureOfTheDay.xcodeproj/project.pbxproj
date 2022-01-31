@@ -12,6 +12,8 @@
 		9FE5606C27A82AA20020FBDD /* FavPictureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE5606A27A82AA20020FBDD /* FavPictureTableViewCell.swift */; };
 		9FE5606D27A82AA20020FBDD /* FavPictureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FE5606B27A82AA20020FBDD /* FavPictureTableViewCell.xib */; };
 		9FE5607127A851320020FBDD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE5607027A851320020FBDD /* Extensions.swift */; };
+		9FE5607527A86FD00020FBDD /* NASAPictureOfTheDay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9FE5607327A86FD00020FBDD /* NASAPictureOfTheDay.xcdatamodeld */; };
+		9FE560A027A894490020FBDD /* Coredata+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE5609F27A894490020FBDD /* Coredata+Helper.swift */; };
 		9FF759B527A55FE300F00B09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF759B427A55FE300F00B09 /* AppDelegate.swift */; };
 		9FF759B727A55FE300F00B09 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF759B627A55FE300F00B09 /* SceneDelegate.swift */; };
 		9FF759B927A55FE300F00B09 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF759B827A55FE300F00B09 /* ViewController.swift */; };
@@ -27,6 +29,8 @@
 		9FE5606A27A82AA20020FBDD /* FavPictureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavPictureTableViewCell.swift; sourceTree = "<group>"; };
 		9FE5606B27A82AA20020FBDD /* FavPictureTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavPictureTableViewCell.xib; sourceTree = "<group>"; };
 		9FE5607027A851320020FBDD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		9FE5607427A86FD00020FBDD /* NASAPictureOfTheDay.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NASAPictureOfTheDay.xcdatamodel; sourceTree = "<group>"; };
+		9FE5609F27A894490020FBDD /* Coredata+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coredata+Helper.swift"; sourceTree = "<group>"; };
 		9FF759B127A55FE300F00B09 /* NASAPictureOfTheDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NASAPictureOfTheDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF759B427A55FE300F00B09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FF759B627A55FE300F00B09 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +80,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		9FE5609E27A894260020FBDD /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				9FE5609F27A894490020FBDD /* Coredata+Helper.swift */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
 		9FF759A827A55FE300F00B09 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +107,7 @@
 		9FF759B327A55FE300F00B09 /* NASAPictureOfTheDay */ = {
 			isa = PBXGroup;
 			children = (
+				9FE5609E27A894260020FBDD /* Commons */,
 				9FE5606F27A851180020FBDD /* Extensions */,
 				9FE5606927A82A7B0020FBDD /* TableViewCells */,
 				9FE5606227A7C6B30020FBDD /* Controllers */,
@@ -105,6 +118,7 @@
 				9FF759BD27A55FE600F00B09 /* Assets.xcassets */,
 				9FF759BF27A55FE600F00B09 /* LaunchScreen.storyboard */,
 				9FF759C227A55FE600F00B09 /* Info.plist */,
+				9FE5607327A86FD00020FBDD /* NASAPictureOfTheDay.xcdatamodeld */,
 			);
 			path = NASAPictureOfTheDay;
 			sourceTree = "<group>";
@@ -193,8 +207,10 @@
 				9FF759B527A55FE300F00B09 /* AppDelegate.swift in Sources */,
 				9FE5607127A851320020FBDD /* Extensions.swift in Sources */,
 				9FF759B727A55FE300F00B09 /* SceneDelegate.swift in Sources */,
+				9FE5607527A86FD00020FBDD /* NASAPictureOfTheDay.xcdatamodeld in Sources */,
 				9FE5606427A7C6DD0020FBDD /* MainViewController.swift in Sources */,
 				9FE5606C27A82AA20020FBDD /* FavPictureTableViewCell.swift in Sources */,
+				9FE560A027A894490020FBDD /* Coredata+Helper.swift in Sources */,
 				9FE5606627A7C7080020FBDD /* FavouritesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,6 +411,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9FE5607327A86FD00020FBDD /* NASAPictureOfTheDay.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9FE5607427A86FD00020FBDD /* NASAPictureOfTheDay.xcdatamodel */,
+			);
+			currentVersion = 9FE5607427A86FD00020FBDD /* NASAPictureOfTheDay.xcdatamodel */;
+			path = NASAPictureOfTheDay.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9FF759A927A55FE300F00B09 /* Project object */;
 }

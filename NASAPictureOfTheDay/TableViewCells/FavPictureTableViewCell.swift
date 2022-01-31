@@ -13,10 +13,12 @@ class FavPictureTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
-    func configureCell(favItem: PictureOfTheDay, image: UIImage) {
+    func configureCell(favItem: SavedPictureModel, imageData: Data) {
         self.titleLabel.text = favItem.title
         self.dateLabel.text = favItem.date
-        self.favImageView.image = image
+        if let image = UIImage(data: imageData) {
+            self.favImageView.image = image
+        }
     }
     
 }
