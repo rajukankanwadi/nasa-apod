@@ -27,6 +27,7 @@ class ViewController: UIViewController {
         
         self.activityIndicator.startAnimating()
         
+        //Check if any saved item is present for selected day
         if let savedPicInfo = CoreDataHelper.retrieveData(forDate: datePicker.date.yyyyMMdd ?? Date().yyyyMMdd!), let title = savedPicInfo.title, let explnaination = savedPicInfo.explaination, let imageData = savedPicInfo.imageData {
             setUpTextlabels(title: title, explanation: explnaination)
             imageView.image = UIImage(data: imageData)
@@ -44,6 +45,7 @@ class ViewController: UIViewController {
         }
         if !InternetConnectionManager.isConnectedToNetwork() {
             stopActivityIndicator()
+            showAlert(title: "No Internet", message: "Please check your connection and retry")
         }
         self.view.layoutSubviews()
     }
