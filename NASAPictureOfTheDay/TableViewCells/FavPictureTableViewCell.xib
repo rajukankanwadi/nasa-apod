@@ -45,6 +45,7 @@
                 <constraints>
                     <constraint firstItem="yy1-vf-H89" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="2b2-8I-3ga"/>
                     <constraint firstItem="4zL-ut-74O" firstAttribute="top" secondItem="yy1-vf-H89" secondAttribute="top" id="9JS-3Y-iSF"/>
+                    <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="4zL-ut-74O" secondAttribute="bottom" constant="42" id="HeY-rX-Xzz"/>
                     <constraint firstAttribute="bottom" secondItem="yy1-vf-H89" secondAttribute="bottom" constant="8" id="PMS-lY-57H"/>
                     <constraint firstAttribute="trailing" secondItem="4zL-ut-74O" secondAttribute="trailing" constant="8" id="XPG-LL-Zcy"/>
                     <constraint firstItem="4zL-ut-74O" firstAttribute="leading" secondItem="yy1-vf-H89" secondAttribute="trailing" constant="8" id="hw9-aS-1hg"/>

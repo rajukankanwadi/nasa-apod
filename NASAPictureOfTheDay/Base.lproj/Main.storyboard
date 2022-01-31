@@ -24,24 +24,24 @@
                                         <rect key="frame" x="0.0" y="-12" width="414" height="896"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Fg1-1H-3iG">
-                                                <rect key="frame" x="24" y="50" width="366" height="104"/>
+                                                <rect key="frame" x="24" y="50" width="366" height="56"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Jiu-kp-9XX">
                                                         <rect key="frame" x="0.0" y="0.0" width="366" height="56"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0C-GV-3aw">
-                                                                <rect key="frame" x="0.0" y="0.0" width="110" height="56"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick a date " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0C-GV-3aw">
+                                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="56"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <datePicker contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="fill" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="0Uy-ZD-IjL">
-                                                                <rect key="frame" x="135" y="0.0" width="139" height="56"/>
+                                                            <datePicker contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="fill" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="0Uy-ZD-IjL">
+                                                                <rect key="frame" x="25" y="0.0" width="316" height="56"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="tintColor" systemColor="labelColor"/>
                                                             </datePicker>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lh7-SV-I43">
-                                                                <rect key="frame" x="299" y="0.0" width="67" height="56"/>
+                                                                <rect key="frame" x="366" y="0.0" width="0.0" height="56"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                 <state key="normal" title="Search"/>
                                                                 <connections>
@@ -54,8 +54,8 @@
                                                             <constraint firstAttribute="height" constant="56" id="kwy-RR-uok"/>
                                                         </constraints>
                                                     </stackView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1j-Yp-VlA">
-                                                        <rect key="frame" x="0.0" y="56" width="366" height="48"/>
+                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1j-Yp-VlA">
+                                                        <rect key="frame" x="0.0" y="0.0" width="366" height="48"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                         <color key="textColor" name="BlackColor"/>
                                                         <nil key="highlightedColor"/>
@@ -63,21 +63,21 @@
                                                 </subviews>
                                             </stackView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fXS-G3-heH">
-                                                <rect key="frame" x="24" y="174" width="366" height="366"/>
+                                                <rect key="frame" x="24" y="126" width="366" height="366"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="fXS-G3-heH" secondAttribute="height" multiplier="1:1" id="5iO-kb-XEc"/>
                                                 </constraints>
                                             </imageView>
                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="fxB-RN-7FJ">
-                                                <rect key="frame" x="177" y="327" width="60" height="60"/>
+                                                <rect key="frame" x="177" y="279" width="60" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="iwp-id-bKX"/>
                                                     <constraint firstAttribute="height" constant="60" id="mDb-Bw-yEi"/>
                                                 </constraints>
                                                 <color key="color" red="0.019607843140000001" green="0.41960784309999999" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </activityIndicatorView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Test" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhQ-5g-h8N">
-                                                <rect key="frame" x="24" y="556" width="366" height="20.5"/>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Test" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhQ-5g-h8N">
+                                                <rect key="frame" x="24" y="508" width="366" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" name="TextColor"/>
                                                 <nil key="highlightedColor"/>
@@ -292,7 +292,7 @@
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="BlueColor">
-            <color red="0.25882352941176473" green="0.30980392156862746" blue="0.92156862745098034" alpha="0.85041660070419312" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.25882352941176473" green="0.30980392156862746" blue="0.92156862745098034" alpha="0.85000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TextColor">
             <color red="0.29019607843137257" green="0.29019607843137257" blue="0.29019607843137257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

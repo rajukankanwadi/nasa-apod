@@ -32,22 +32,28 @@ class ViewController: UIViewController {
         } else {
             self.title = "APOD"
             searchDateView.isHidden = true
-            fetchCurrentDaeAPOD()
+            fetchCurrentDateAPOD()
         }
         self.view.layoutSubviews()
     }
     
-    func fetchCurrentDaeAPOD () {
+    fileprivate func setUpTextlabels(picInfo: PictureOfTheDay) {
+        self.titleLabel.isHidden = false
+        self.subTitleLabel.isHidden = false
+        self.titleLabel.text = picInfo.title
+        self.subTitleLabel.text = picInfo.explanation
+        self.view.layoutSubviews()
+    }
+    
+    func fetchCurrentDateAPOD () {
         URLSession.shared.pictureOfTheDayTask(with: URL(string: apodURL)! ) { pictureInfo, _, error in
             if error == nil {
                 if let picInfo = pictureInfo, let urlStr = picInfo.url {
                     self.picInfo = picInfo
-                    DispatchQueue.main.async {
-                        self.titleLabel.text = picInfo.title
-                        self.subTitleLabel.text = picInfo.explanation
-                        self.view.layoutSubviews()
-                    }
                     self.downloadImage(urlString: urlStr)
+                    DispatchQueue.main.async {
+                        self.setUpTextlabels(picInfo: picInfo)
+                    }
                 } else {
                    self.stopActivityIndicator()
                 }
@@ -80,6 +86,7 @@ class ViewController: UIViewController {
         activityIndicator.startAnimating()
         getPictureForSelectedDate()
     }
+
     @IBAction func favouriteButtonClicked(_ sender: Any) {
         if let picInfo = self.picInfo, !FavouritesTableViewController.favItems.contains(picInfo) {
             FavouritesTableViewController.favItems.append(picInfo)
@@ -92,12 +99,10 @@ class ViewController: UIViewController {
             if error == nil {
                 if let picInfo = pictureInfo, let urlStr = picInfo.url {
                     self.picInfo = picInfo
-                    DispatchQueue.main.async {
-                        self.titleLabel.text = picInfo.title
-                        self.subTitleLabel.text = picInfo.explanation
-                        self.view.layoutSubviews()
-                    }
                     self.downloadImage(urlString: urlStr)
+                    DispatchQueue.main.async {
+                        self.setUpTextlabels(picInfo: picInfo)
+                    }
                 } else {
                     self.stopActivityIndicator()
                 }
